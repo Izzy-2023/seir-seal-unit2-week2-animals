@@ -57,6 +57,24 @@ app.get('/animals/new', (req, res) => {
     res.render('new.ejs', {animals})
 });
 
+// DESTROY
+app.delete("/animals/:id", (req, res) => {
+    Pokemon.splice(req.params.id, 1);
+    res.redirect("/animals");
+  });
+
+  // UPDATE 
+app.put("/animals/:id", (req, res) => {
+    const updateAnimals = {
+      species: req.body.species,
+      extinct: req.body.extinct,
+      location: req.body.location,
+      lifeExpectancy: req.body.lifeExpectancy
+      }
+    animals[req.params.id] = updateAnimals;
+    res.redirect(`/animals/${req.params.id}`);
+  });
+
 
 // ********************************
 // SERVER LISTENER
