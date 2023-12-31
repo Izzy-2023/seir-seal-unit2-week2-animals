@@ -8,15 +8,27 @@
 <body>
     <h1>Animals Show Page</h1>
 
-
     <div class="showcontainer">
-        <div id="species">
+        <div id="Animal">
             <p>Species: <%= aAnimal.species %></p>
             <p>Extinct: <%= aAnimal.extinct %></p>
-            <p>location: <%= aAnimal.location %></p>
-            <p>Live Expectancy: <%= aAnimal.lifeExpectancy %></p>
+            <p>Location: <%= aAnimal.location %></p>
+            <p>Life Expectancy: <%= aAnimal.lifeExpectancy %></p>
    
         </div>
     </div>
+
+    <div class="showcontainer">
+        <div id="buttons">
+
+            <form class="button-showpage" action="/animals/<%= index %>/edit">
+                <input class="edit-button" type="submit" value="EDIT">
+            
+            <form class="button-showpage" action="/animals/<%= index %>?_method=DELETE" method="POST">
+                <input class="delete-button" type="submit" value="DELETE">
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>

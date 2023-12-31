@@ -49,8 +49,9 @@ app.use(methodOverride("_method"))
 
 // INDEX
 app.get("/animals", (req, res) => {
-    res.render("index.ejs", {Animals})
+    res.render("index.ejs", {data: Animals})
 })
+
 
 // NEW
 app.get('/animals/new', (req, res) => {
