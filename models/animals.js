@@ -1,19 +1,27 @@
-// ****************************
-// DEPENDENCIES
-// ****************************
-
-const mongoose = require("mongoose")
-
-// make animals schema
-const animalsSchema = new mongoose.Schema({
-    species: {type: String, required: true},
-    extinct: {type: Boolean, required: true},
-    location: {type: Boolean, required: true},
-    lifeExpectancy: {type: Number, required: true}
-})
-
-// make animals model
-const animals = mongoose.model("animals", animalsSchema)
-
-// we export the animals
-module.exports = animals
+module.exports = [
+    
+        {
+          "species": "Tiger",
+          "extinct": false,
+          "location": "Various regions in Asia",
+          "lifeExpectancy": 20
+        },
+        {
+          "species": "Dodo",
+          "extinct": true,
+          "location": "Mauritius",
+          "lifeExpectancy": 20
+        },
+        {
+          "species": "Giant Panda",
+          "extinct": false,
+          "location": "China",
+          "lifeExpectancy": 20
+        },
+        {
+          "species": "Blue Whale",
+          "extinct": false,
+          "location": "Oceans worldwide",
+          "lifeExpectancy": 70
+        }
+]

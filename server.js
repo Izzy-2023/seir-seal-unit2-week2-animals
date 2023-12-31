@@ -8,7 +8,7 @@ require("./config/db") // bring in our db config
 const express = require("express")
 // import morgan
 const morgan = require("morgan")
-const animals = require("./models/animals")
+const Animals = require("./models/animals")
 // import method override
 const methodOverride = require("method-override")
 const { PORT = 3013 } = process.env;
@@ -22,7 +22,7 @@ const app = express()
 
 app.use((req, res, next) => {
     req.model = {
-       animals,
+       Animals,
 
     }
         console.log("this is middleware")
@@ -49,17 +49,17 @@ app.use(methodOverride("_method"))
 
 // INDEX
 app.get("/animals", (req, res) => {
-    res.render("index.ejs", {animals})
+    res.render("index.ejs", {Animals})
 })
 
 // NEW
 app.get('/animals/new', (req, res) => {
-    res.render('new.ejs', {animals})
+    res.render('new.ejs', {Animals})
 });
 
 // DESTROY
 app.delete("/animals/:id", (req, res) => {
-    animals.splice(req.params.id, 1);
+    Animals.splice(req.params.id, 1);
     res.redirect("/animals");
   });
 
@@ -71,14 +71,14 @@ app.put("/animals/:id", (req, res) => {
       location: req.body.location,
       lifeExpectancy: req.body.lifeExpectancy
       }
-    animals[req.params.id] = updateAnimals;
+    Animals[req.params.id] = updateAnimals;
     res.redirect(`/animals/${req.params.id}`);
   });
 
   // EDIT 
 app.get("/animals/:id/edit", (req, res) => {
     res.render("edit.ejs", {
-      anAnimal: animals[req.params.id],
+      aAnimal: Animals[req.params.id],
       index: req.params.id
     });
   });
@@ -91,16 +91,15 @@ app.post("/animals", (req, res) => {
         location: req.body.location,
         lifeExpectancy: req.body.lifeExpectancy
       }
-    animals.push(newAnimal);
+    Animals.push(newAnimal);
     res.send(newAnimal);
   });
-
 
 // SHOW
 app.get("/animals/:id", (req, res) => {
     res.render("show.ejs", {
       index: req.params.id,
-      anAnimal: animals[req.params.id]
+      aAnimal: Animals[req.params.id]
     });
   });
 

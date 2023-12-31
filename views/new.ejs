@@ -7,6 +7,24 @@
 </head>
 <body>
     <h1>New Animals Page</h1>
+
+    <div class="new-pokemon">
+    
+        <form action="/animals/" method="POST">
+        <fieldset>
+            <legend>Add Animal</legend>
+            <label>Species</label>
+            <input class="newpage" type="text" name="species"/>
+            <label>Extinct</label>
+            <input type="checkbox" name="extinct" id="extinct">
+            <label>Location</label>
+            <input class="newpage" type="text" name="location"/>
+            <label>Life Expectancy</label>
+            <input class="newpage" type="number" name="life-expectancy"/><br><br>
+            <input class="submit-button" type="submit" value="ADD ANIMAL" />
+        </fieldset>
+        </form>
+    </div>
     
 </body>
 </html>
