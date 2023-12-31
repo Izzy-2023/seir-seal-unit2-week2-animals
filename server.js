@@ -59,7 +59,7 @@ app.get('/animals/new', (req, res) => {
 
 // DESTROY
 app.delete("/animals/:id", (req, res) => {
-    Pokemon.splice(req.params.id, 1);
+    animals.splice(req.params.id, 1);
     res.redirect("/animals");
   });
 
@@ -73,6 +73,35 @@ app.put("/animals/:id", (req, res) => {
       }
     animals[req.params.id] = updateAnimals;
     res.redirect(`/animals/${req.params.id}`);
+  });
+
+  // EDIT 
+app.get("/animals/:id/edit", (req, res) => {
+    res.render("edit.ejs", {
+      anAnimal: animals[req.params.id],
+      index: req.params.id
+    });
+  });
+
+  // CREATE
+app.post("/animals", (req, res) => {
+    const newAnimal = {
+        species: req.body.species,
+        extinct: req.body.extinct,
+        location: req.body.location,
+        lifeExpectancy: req.body.lifeExpectancy
+      }
+    animals.push(newAnimal);
+    res.send(newAnimal);
+  });
+
+
+// SHOW
+app.get("/animals/:id", (req, res) => {
+    res.render("show.ejs", {
+      index: req.params.id,
+      anAnimal: animals[req.params.id]
+    });
   });
 
 
