@@ -1,14 +1,35 @@
+// ***********************************
+// DEPENDENCIES
+// ***********************************
+
 // import express
+require("dotenv").config() // this is how we make use of our .env variables
+require("./config/db") // bring in our db config
 const express = require("express")
 // import morgan
 const morgan = require("morgan")
+const animals = require("./models/animals")
 // import method override
 const methodOverride = require("method-override")
+const { PORT = 3013 } = process.env;
 
 // create our app object
 const app = express()
 
-// middleware
+// **********************************
+// MIDDLEWARE
+// **********************************
+
+app.use((req, res, next) => {
+    req.model = {
+       animals,
+
+    }
+        console.log("this is middleware")
+        // go to the next app method
+        next()
+    })
+
 app.use(express.static("public")) // use a "public" folder for files
 // public/style.css -> /style.css
 // public/app.js -> /app.js
@@ -21,3 +42,24 @@ app.use(morgan("dev"))
 // as a different method like PUT or DELETE
 // It will look for a _method url query
 app.use(methodOverride("_method"))
+
+// ********************************
+// ROUTES
+// ********************************
+
+// INDEX
+app.get("/animals", (req, res) => {
+    res.render("index.ejs", {animals})
+})
+
+// NEW
+app.get('/animals/new', (req, res) => {
+    res.render('new.ejs', {animals})
+});
+
+
+// ********************************
+// SERVER LISTENER
+// ********************************
+
+app.listen(PORT, () => console.log(`Listening to the sounds of ${PORT}`))
