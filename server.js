@@ -110,7 +110,6 @@ app.get('/animals/new', (req, res) => {
     res.render('new.ejs', {Animal})
 });
 
-
 // create route
 app.post("/animals", async (req, res) => {
   try {
@@ -125,13 +124,6 @@ app.post("/animals", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
-  // EDIT 
-  app.get("/animals/:id/edit", (req, res) => {
-    res.render("edit.ejs", {
-      aAnimal: Animal[req.params.id],
-      index: req.params.id
-    });
-  });
 
 // Edit Route (Get to /animals/:id/edit)
 app.get("/animals/:id/edit", async (req, res) => {

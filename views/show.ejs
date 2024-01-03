@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <%- include("./partials/head.ejs") %>
 <body>
-    <h1>Animals Show Page</h1>
+    <%- include("./partials/header.ejs") %>
 
     <div class="showcontainer">
         <div id="info">
-            <p>Species: <%= aAnimal.species %></p>
-            <p>Extinct: <%= aAnimal.extinct %></p>
-            <p>Location: <%= aAnimal.location %></p>
-            <p>Life Expectancy: <%= aAnimal.lifeExpectancy %></p>
+            <p>Species: <%= animal.species %></p>
+            <p>Extinct: <%= animal.extinct %></p>
+            <p>Location: <%= animal.location %></p>
+            <p>Life Expectancy: <%= animal.lifeExpectancy %></p>
    
         </div>
     </div>
