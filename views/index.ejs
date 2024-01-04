@@ -11,7 +11,7 @@
         <% for (let i = 0; i < animals.length; ++i) { %>
             <div class="animals">
                 <a href="/animals/<%= animals[i]._id %>" >
-                    <h2><%= animals[i].species %> - <%= animals.extinct ? "Extinct" : "Not Extinct" %>
+                    <h2><%= animals[i].species %> - <%= animals[i].extinct ? "Extinct" : "Not Extinct" %>
                     </h2>
                     </a>
                     
