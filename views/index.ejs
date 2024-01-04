@@ -5,18 +5,19 @@
     <%- include("./partials/header.ejs") %>
 
 <main>
+
+
     <div>
-          <% for (animal of animals) { %>
-  
-        <article>
-            <a href="/animals/<%= animals._id %>">
-              <h2>
-                <%= animal.species %> - <%= animals.extinct ? "Extinct" : "Not Extinct" %>
-              </h2>
-            </a>
-        </article>
-  
-          <% } %>
+        <% for (let i = 0; i < animals.length; ++i) { %>
+            <div class="animals">
+                <a href="/animals/<%= animals[i]._id %>" >
+                    <h2><%= animals[i].species %> - <%= animals.extinct ? "Extinct" : "Not Extinct" %>
+                    </h2>
+                    </a>
+                    
+                </div>
+            </div>
+        <% } %>
     </div>
 </main>
   

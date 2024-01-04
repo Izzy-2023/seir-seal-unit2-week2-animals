@@ -114,7 +114,7 @@ app.get('/animals/new', (req, res) => {
 app.post("/animals", async (req, res) => {
   try {
     // check if the readyToEat property should be true or false
-    req.body.extinct = req.body.exrinct === "on" ? true : false;
+    req.body.extinct = req.body.extinct === "on" ? true : false;
     // create the new fruit
     await Animal.create(req.body);
     // redirect the user back to the main fruits page after fruit created
@@ -157,11 +157,6 @@ app.put("/animals/:id", async (req, res) => {
   }
 });
 
-// DESTROY
-app.delete("/animals/:id", (req, res) => {
-    Animal.splice(req.params.id, 1);
-    res.redirect("/animals");
-  });
 
   // The Delete Route (delete to /animals/:id)
 app.delete("/animals/:id", async (req, res) => {
@@ -173,13 +168,6 @@ app.delete("/animals/:id", async (req, res) => {
   res.redirect("/animals")
 })
 
-// SHOW
-app.get("/animals/:id", (req, res) => {
-    res.render("show.ejs", {
-      index: req.params.id,
-      aAnimal: Animal[req.params.id]
-    });
-  });
 
   // The Show Route (Get to /animals/:id)
 app.get("/animals/:id", async (req, res) => {
@@ -187,11 +175,11 @@ app.get("/animals/:id", async (req, res) => {
       // get the id from params
       const id = req.params.id
 
-      // find the particular fruit from the database
+      // find the particular animal from the database
       const animals = await Animal.findById(id)
 
-      // render the template with the fruit
-      res.render("show.ejs", {fruit})
+      // render the template with the animal
+      res.render("show.ejs", {animals})
   }catch(error){
       console.log("-----", error.message, "------")
       res.status(400).send("error, read logs for details")

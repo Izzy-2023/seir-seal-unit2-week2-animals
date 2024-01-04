@@ -6,15 +6,15 @@
     <h1>Animals Edit Page</h1>
 
     <div class="updatepage-container"></div>
-    <form action="/animals/<%= index %>?_method=PUT" method="POST">
+    <form action="/animals/<%= animals._id %>?_method=PUT" method="POST">
         <label>Species</label>
-        <input class="editpage" type="text" name="name" value="<%= animal.species %>"/><br>
+        <input class="editpage" type="text" name="species" value="<%= animals.species %>"/><br>
         <label>Extinct</label>
-        <input type="checkbox" name="completed" id="completed" value="<%= animal.extinct %>"><br>
+        <input type="checkbox" name="extinct" id="completed" value="<%= animals.extinct %>"><br>
         <label>Location</label>
-        <input class="editpage" type="text" name="type" value="<%= animal.location %>"/><br>
+        <input class="editpage" type="text" name="location" value="<%= animals.location %>"/><br>
         <label>Life Expectancy</label>
-        <input class="editpage" type="number" name="hp" value="<%= animal.lifeExpectancy %>"/><br><br>
+        <input class="editpage" type="number" name="lifeExpectancy" value="<%= animals.lifeExpectancy %>"/><br><br>
         <input class="submit-button" type="submit" value="UPDATE ANIMAL" />
 
     </form>
