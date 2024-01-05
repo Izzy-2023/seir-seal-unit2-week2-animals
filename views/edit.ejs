@@ -10,7 +10,7 @@
         <label>Species</label>
         <input class="editpage" type="text" name="species" value="<%= animals.species %>"/><br>
         <label>Extinct</label>
-        <input type="checkbox" name="extinct" id="completed" value="<%= animals.extinct %>"><br>
+        <input type="checkbox" name="extinct" <%= animals.extinct ? "checked" : "" %>/><br>
         <label>Location</label>
         <input class="editpage" type="text" name="location" value="<%= animals.location %>"/><br>
         <label>Life Expectancy</label>
